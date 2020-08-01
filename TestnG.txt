@@ -1,0 +1,1926 @@
+TestNG
+-----------
+Oiginal site :-https://testng.org/doc/download.html
+==================================
+Install from update site
+Select Help / Install New Software...
+Enter the update site URL in "Work with:" field:
+Update site for release: https://dl.bintray.com/testng-team/testng-eclipse-release/.
+Make sure the check box next to URL is checked and click Next.
+Eclipse will then guide you through the process.
+=====================================================================
+1St Program
+=====================
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+}
+--------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+--------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <classes>
+      <class name="Test_Pkg.Test1"/>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+ 
+  </class>
+  </classes>
+  </test>
+</suite>
+----------------------------------------------------------
+Output:-
+--------
+[RemoteTestNG] detected TestNG version 7.2.0
+Bye
+hello
+good
+BankPay1
+MobilePay1
+HomePay1
+BankLoan1
+MobileLoan1
+HomeLoan1
+
+===============================================
+Suite
+Total tests run: 9, Passes: 9, Failures: 0, Skips: 0
+===============================================
+2nd Program:- Exclude a single Method in a class and run the TestNG
+------------
+==================================================================
+=====================================================================
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+}
+--------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+--------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+-------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <classes>
+      <class name="Test_Pkg.Test1"/>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="MobileHomeLoan"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+----------------------------------------------------------
+Output:-
+--------
+[RemoteTestNG] detected TestNG version 7.2.0
+Bye
+hello
+good
+BankPay1
+MobilePay1
+HomePay1
+BankLoan1
+HomeLoan1
+
+===============================================
+Suite
+Total tests run: 8, Passes: 8, Failures: 0, Skips: 0
+==============================================================================================
+Program:-3 : How to include the method using include in xml file
+-------------
+======================================================
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+}
+--------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+--------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+---------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>
+      </methods>
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="MobileHomeLoan"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+---------------------------------------------------
+Output:-
+---------
+[RemoteTestNG] detected TestNG version 7.2.0
+hello
+good
+BankPay1
+MobilePay1
+HomePay1
+BankLoan1
+HomeLoan1
+
+===============================================
+Suite
+Total tests run: 7, Passes: 7, Failures: 0, Skips: 0
+====================================================================
+Program:4 : Using Regular expression to exclude the method :- <exclude name="Methodname.*" />
+----------
+=====================================================================================
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+}
+--------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	@Test
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("Mobilewelcome1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+--------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+-------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>
+      </methods>
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="Mobile.*"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+-----------------------------------------------------
+output:-
+--------
+[RemoteTestNG] detected TestNG version 7.2.0
+hello
+good
+BankPay1
+MobilePay1
+HomePay1
+BankLoan1
+HomeLoan1
+
+===============================================
+Suite
+Total tests run: 7, Passes: 7, Failures: 0, Skips: 0
+=====================================================================================
+Program:5 How to excute all the class inside a single Pkg , using Pkg
+------------
+=====================================================================================
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+}
+--------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	@Test
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("Mobilewelcome1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+--------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+-------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <packages>
+    <package name="Test_Pkg"></package>
+    </packages>
+  </test>
+</suite>
+--------------------------------------------------------
+Output:-
+------
+[RemoteTestNG] detected TestNG version 7.2.0
+Bye
+hello
+good
+BankLoan1
+MobileLoan1
+MobileSigninLoan1
+MobileSignOutLoan1
+Mobilewelcome1
+HomeLoan1
+BankPay1
+MobilePay1
+HomePay1
+
+===============================================
+Suite
+Total tests run: 12, Passes: 12, Failures: 0, Skips: 0
+==============================================================================================
+Program:-6 :- TestNG Annotation
+---------
+===============================================================================================
+1)BeforeTest and AfterTest Annotation
+--------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@AfterTest                        --------------------------------> Annotation
+	public void LastExecution() {
+		System.out.println("i will execute Last");
+	}
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+--------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+	
+	@BeforeTest                         --------------------------------> Annotation
+	public void prerequiste() {
+		System.out.println("I will execute first");
+	}
+}
+-----------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	@Test
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("Mobilewelcome1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+---------------------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+----------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">             --------------------------------->
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>          
+      </methods>                                                                                           
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test>                                             --------------------------------->
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="Mobile.*"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+--------------------------------------------------------------------
+Output:-
+---------
+[RemoteTestNG] detected TestNG version 7.2.0
+I will execute first                       ---------------------------->BeforeTest Annotation
+hello
+good
+BankPay1
+MobilePay1
+HomePay1
+i will execute Last                       ------------------------------->AfterTest Annotation
+BankLoan1
+HomeLoan1
+
+===============================================
+Suite
+Total tests run: 7, Passes: 7, Failures: 0, Skips: 0
+==========================================================================================
+2)AfterSuite Annotation and BeforeSuite Annotation
+=======================================================
+package Test_Pkg;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@AfterTest
+	public void LastExecution() {
+		System.out.println("i will execute Last");
+	}
+	
+	@AfterSuite
+	public void executeSuiteLast() {
+		System.out.println("excute Last Suite");
+	}
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+--------------------------------------------------
+package Test_Pkg;
+
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+	
+	@BeforeTest
+	public void excuteTest() {
+		System.out.println("excute first test");
+	}
+	
+	@Test
+	public void prerequiste() {
+		System.out.println("go");
+	}
+}
+---------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class Test3 {
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@Test
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	@BeforeSuite
+	public void ExecuteSuite() {
+		System.out.println("execute first suit");
+	}
+	
+	@Test
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("Mobilewelcome1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+-----------------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+---------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>
+      </methods>
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="Mobile.*"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+----------------------------------------------------------------------------------
+OutPut:-
+[RemoteTestNG] detected TestNG version 7.2.0
+execute first suit                 ---------------------------->BeforeSuite
+excute first test                  ---------------------------->BeforeTest
+hello
+good
+go
+BankPay1
+MobilePay1
+HomePay1
+i will execute Last                ------------------------------>AfterTest
+BankLoan1
+HomeLoan1
+excute Last Suite                   ----------------------------->AfterSuite
+
+===============================================
+Suite
+Total tests run: 8, Passes: 8, Failures: 0, Skips: 0
+===================================================================================
+4)BeforeMethod and AfterMethod  && BeforeClass and AfterClass
+--------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@AfterTest
+	public void LastExecution() {
+		System.out.println("i will execute Last");
+	}
+	
+	@AfterSuite
+	public void executeSuiteLast() {
+		System.out.println("excute Last Suite");
+	}
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+--------------------------------------------------
+package Test_Pkg;
+
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test
+	public void Demo2() {
+		System.out.println("good");
+	}
+	
+	@BeforeTest
+	public void excuteTest() {
+		System.out.println("excute first test");
+	}
+	
+	@Test
+	public void prerequiste() {
+		System.out.println("go");
+	}
+}
+-------------------------------------------------------------------
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class Test3 {
+	
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("Before executing any methos in the class");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		System.out.println("after executing any methos in the class");
+	}
+		
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@BeforeMethod
+	public void beforeEvery() {
+		System.out.println("I will execute before every test method in test3 class");
+	}
+	
+	@AfterMethod
+	public void AfterEvery() {
+		System.out.println("I will execute after every test method in test3 class");
+	}
+	
+	@Test
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	
+	
+	@BeforeSuite
+	public void ExecuteSuite() {
+		System.out.println("execute first suit");
+	}
+	
+	@Test
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("Mobilewelcome1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+------------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+------------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="HomeLoan">
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>
+      </methods>
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="Mobile.*"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+---------------------------------------------------------------------
+OutPut:-
+----------
+[RemoteTestNG] detected TestNG version 7.2.0
+execute first suit
+excute first test
+hello
+good
+go
+BankPay1
+MobilePay1
+HomePay1
+i will execute Last
+Before executing any methos in the class
+I will execute before every test method in test3 class
+BankLoan1
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+HomeLoan1
+I will execute after every test method in test3 class
+after executing any methos in the class
+excute Last Suite
+
+===============================================
+Suite
+Total tests run: 8, Passes: 8, Failures: 0, Skips: 0
+=====================================================================================
+7)Group annotations and run Annotation :- To reprate the method for different different class
+-----------------------------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@AfterTest
+	public void LastExecution() {
+		System.out.println("i will execute Last");
+	}
+	
+	@AfterSuite
+	public void executeSuiteLast() {
+		System.out.println("excute Last Suite");
+	}
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------------
+package Test_Pkg;
+
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test(groups="smoke")
+	public void Demo2() {
+		System.out.println("good");
+	}
+	
+	@BeforeTest
+	public void excuteTest() {
+		System.out.println("excute first test");
+	}
+	
+	@Test
+	public void prerequiste() {
+		System.out.println("go");
+	}
+}
+--------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class Test3 {
+	
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("Before executing any methos in the class");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		System.out.println("after executing any methos in the class");
+	}
+		
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@BeforeMethod
+	public void beforeEvery() {
+		System.out.println("I will execute before every test method in test3 class");
+	}
+	
+	@AfterMethod
+	public void AfterEvery() {
+		System.out.println("I will execute after every test method in test3 class");
+	}
+	
+	@Test(groups="smoke")
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	
+	
+	@BeforeSuite
+	public void ExecuteSuite() {
+		System.out.println("execute first suit");
+	}
+	
+	@Test
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("Mobilewelcome1");
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+---------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test(groups="smoke")
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+-----------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Regression">
+  <groups>
+  <run>
+  <include name ="smoke"/>                            //<exclude name ="smoke"/>  
+  </run>                                                 we get just Opposite OutPut
+  </groups>
+    <classes>
+      <class name="Test_Pkg.Test1"/>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test3"/>
+      <class name ="Test_Pkg.Test4"/>
+  </classes>
+  </test>
+</suite>
+------------------------------------------------------------------
+OutPut:-
+----------
+[RemoteTestNG] detected TestNG version 7.2.0
+good
+MobileSigninLoan1
+BankPay1
+
+===============================================
+Suite
+Total tests run: 3, Passes: 3, Failures: 0, Skips: 0
+=======================================================================================
+8)dependsOnMethods Annotation -- use to print other test case which is not Alphabeticas 
+, enabled Annotation : Skip the Method ,it take boolean
+,timeOut Annotation :- It fix the time
+=======================================================================================
+package Test_Pkg;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@AfterTest
+	public void LastExecution() {
+		System.out.println("i will execute Last");
+	}
+	
+	@AfterSuite
+	public void executeSuiteLast() {
+		System.out.println("excute Last Suite");
+	}
+	
+	@Test	
+	public void demo() {
+		System.out.println("hello");
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------------------
+package Test_Pkg;
+
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test(groups="smoke")
+	public void Demo2() {
+		System.out.println("good");
+	}
+	
+	@BeforeTest
+	public void excuteTest() {
+		System.out.println("excute first test");
+	}
+	
+	@Test
+	public void prerequiste() {
+		System.out.println("go");
+	}
+}
+--------------------------------------------------------------
+package Test_Pkg;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
+
+public class Test3 {
+	
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("Before executing any methos in the class");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		System.out.println("after executing any methos in the class");
+	}
+		
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Test(timeOut=1000)                             ---------------------------------->
+	public void MobileHomeLoan() {
+		System.out.println("MobileLoan1");
+	}
+	
+	@BeforeMethod
+	public void beforeEvery() {
+		System.out.println("I will execute before every test method in test3 class");
+	}
+	
+	@AfterMethod
+	public void AfterEvery() {
+		System.out.println("I will execute after every test method in test3 class");
+	}
+	
+	@Test(groups="smoke")
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	
+	
+	@BeforeSuite
+	public void ExecuteSuite() {
+		System.out.println("execute first suit");
+	}
+	
+	@Test(enabled=false)                                       ---------------------->Annotation
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void MobilewelcomeLoan() {
+		System.out.println("welcome1");
+	}
+	
+	@Test(dependsOnMethods="MobilewelcomeLoan")          --------------------------> Annotation
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+
+}
+-----------------------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test(groups="smoke")
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+---------------------------------------------
+Same Xml as above
+---------------------------------------------
+OutPut:-
+----------
+[RemoteTestNG] detected TestNG version 7.2.0
+execute first suit
+Before executing any methos in the class
+I will execute before every test method in test3 class
+MobileLoan1
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+MobileSigninLoan1
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+welcome1
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+HomeLoan1
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+BankLoan1
+I will execute after every test method in test3 class
+after executing any methos in the class
+PASSED: MobileHomeLoan
+PASSED: MobileSigninLoan
+PASSED: MobilewelcomeLoan
+PASSED: WebHomeLoan
+PASSED: BankHomeLoan
+
+===============================================
+    Default test
+    Tests run: 5, Failures: 0, Skips: 0
+===============================================
+
+
+===============================================
+Default suite
+Total tests run: 5, Passes: 5, Failures: 0, Skips: 0
+==============================================================================================
+9)Parameterization in TestNG xml file
+==============================================================================================
+package Test_Pkg;
+
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class Test1 {
+	
+	@AfterTest
+	public void LastExecution() {
+		System.out.println("i will execute Last");
+	}
+	
+	@AfterSuite
+	public void executeSuiteLast() {
+		System.out.println("excute Last Suite");
+	}
+	
+	@Parameters({"URL"})
+	@Test	
+	public void demo(String hh) {
+		System.out.println("hello");
+		System.out.println(hh);
+		}
+	
+	@Test
+	public void SecondDemo() {
+		System.out.println("Bye");
+	}
+}
+---------------------------------------------
+package Test_Pkg;
+
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class Test2 {
+ 
+	@Test(groups="smoke")
+	public void Demo2() {
+		System.out.println("good");
+	}
+	
+	@BeforeTest
+	public void excuteTest() {
+		System.out.println("excute first test");
+	}
+	
+	@Parameters({"SSS"})
+	@Test
+	public void prerequiste(String s) {
+		System.out.println("go");
+		System.out.println(s);
+	}
+}
+------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class Test3 {
+	
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("Before executing any methos in the class");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		System.out.println("after executing any methos in the class");
+	}
+		
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Parameters({"RRR","PPP"})
+	@Test
+	public void MobHomeLoan(String hh,String pp) {
+		System.out.println("MobileLoan1");
+		System.out.println(hh);
+		System.out.println(pp);
+	}
+	
+	@BeforeMethod
+	public void beforeEvery() {
+		System.out.println("I will execute before every test method in test3 class");
+	}
+	
+	@AfterMethod
+	public void AfterEvery() {
+		System.out.println("I will execute after every test method in test3 class");
+	}
+	
+	@Test(groups="smoke")
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	@BeforeSuite
+	public void ExecuteSuite() {
+		System.out.println("execute first suit");
+	}
+	
+	@Test(enabled=false)
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test
+	public void ClgcomeLoan(String username ,String userPasword) {
+		System.out.println("welcome1");
+		System.out.println(username);
+		System.out.println(userPasword);
+		
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+   }
+   }
+-----------------------------------------------------------------
+package Test_Pkg;
+
+import org.testng.annotations.Test;
+
+public class Test4 {
+	
+	@Test
+	public void WebHomePay() {
+		System.out.println("HomePay1");
+	}
+	
+	@Test
+	public void MobileHomePay() {
+		System.out.println("MobilePay1");
+	}
+	
+	@Test(groups="smoke")
+	public void BankHomePay() {
+		System.out.println("BankPay1");
+	}
+}
+---------------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<parameter name="URL" value="RanjeetKumar"></parameter>
+  <test thread-count="5" name="HomeLoan">
+    <parameter name="SSS" value="SuchitKumar"></parameter>
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>
+      </methods>
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+   <parameter name="RRR" value="SanjeetKumar"></parameter>
+    <parameter name="PPP" value="NishantKuamr"></parameter>
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="Mobile.*"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+--------------------------------------------------------------
+OutPut:- Solution
+===========================================================================================
+10)DataProvider
+----------------
+Test1,test2 ,Test4 is same 
+----------------------
+package Test_Pkg;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+public class Test3 {
+	
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("Before executing any methos in the class");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		System.out.println("after executing any methos in the class");
+	}
+		
+	@Test
+	public void WebHomeLoan() {
+		System.out.println("HomeLoan1");
+	}
+	
+	@Parameters({"RRR","PPP"})
+	@Test
+	public void MobHomeLoan(String hh,String pp) {
+		System.out.println("MobileLoan1");
+		System.out.println(hh);
+		System.out.println(pp);
+	}
+	
+	@BeforeMethod
+	public void beforeEvery() {
+		System.out.println("I will execute before every test method in test3 class");
+	}
+	
+	@AfterMethod
+	public void AfterEvery() {
+		System.out.println("I will execute after every test method in test3 class");
+	}
+	
+	@Test(groups="smoke")
+	public void MobileSigninLoan() {
+		System.out.println("MobileSigninLoan1");
+	}
+	
+	@BeforeSuite
+	public void ExecuteSuite() {
+		System.out.println("execute first suit");
+	}
+	
+	@Test(enabled=false)
+	public void MobileSignoutLoan() {
+		System.out.println("MobileSignOutLoan1");
+	}
+	
+	@Test(dataProvider="getdata")
+	public void ClgcomeLoan(String username ,String userPasword) {
+		System.out.println("welcome1");
+		System.out.println(username);
+		System.out.println(userPasword);
+		
+	}
+	
+	@Test
+	public void BankHomeLoan() {
+		System.out.println("BankLoan1");
+	}
+   
+	@DataProvider
+    public Object[][] getdata() {
+		//1st People ---> Username ----2)Password
+    	//2st People ---> Username ----2)Password
+    	//1st People ---> Username ----2)Password
+    	
+        Object[][] data = new Object[3][2];
+        data[0][0]="firstusername";
+        data[0][1]="firstuserPassword";
+        
+        data[1][0]="Secondusername";
+        data[1][1]="SeconduserPassword";
+        
+        data[2][0]="Thirdusername";
+        data[2][1]="ThirduserPassword";
+        
+        return data;
+    	
+    	
+	}
+	
+}
+--------------------------------------------------------------
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<parameter name="URL" value="RanjeetKumar"></parameter>
+  <test thread-count="5" name="HomeLoan">
+    <parameter name="SSS" value="SuchitKumar"></parameter>
+    <classes>
+      <class name="Test_Pkg.Test1">
+      <methods>
+      <include name="demo"></include>
+      </methods>
+      </class>
+      <class name="Test_Pkg.Test2"/>
+      <class name="Test_Pkg.Test4"/>
+    </classes>
+  </test> 
+  
+  <test thread-count="5" name="CarLoan">
+   <parameter name="RRR" value="SanjeetKumar"></parameter>
+    <parameter name="PPP" value="NishantKuamr"></parameter>
+  <classes>
+  <class name="Test_Pkg.Test3">
+  <methods>
+  <exclude name="Mobile.*"></exclude>
+  </methods>
+  </class>
+  </classes>
+  </test>
+</suite>
+==========================================================
+output:-
+[RemoteTestNG] detected TestNG version 7.2.0
+execute first suit
+excute first test
+hello
+RanjeetKumar
+good
+go
+SuchitKumar
+BankPay1
+MobilePay1
+HomePay1
+i will execute Last
+Before executing any methos in the class
+I will execute before every test method in test3 class
+BankLoan1
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+welcome1
+firstusername
+firstuserPassword
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+welcome1
+Secondusername
+SeconduserPassword
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+welcome1
+Thirdusername
+ThirduserPassword
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+MobileLoan1
+SanjeetKumar
+NishantKuamr
+I will execute after every test method in test3 class
+I will execute before every test method in test3 class
+HomeLoan1
+I will execute after every test method in test3 class
+after executing any methos in the class
+excute Last Suite
+
+===============================================
+Suite
+Total tests run: 12, Passes: 12, Failures: 0, Skips: 0
+================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+===========================================================================================
+# GlobalValueDrive:-
+-------------------
+package Test_Pkg;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
+
+public class GlobalVariableDrive {
+
+	public static void main(String[] args) throws IOException {
+		
+		Properties pros = new Properties();
+		FileInputStream fis = new FileInputStream("C:\\Users\\Suchit\\eclipse-workspace\\TestNGTutorial\\src\\data.properties");
+		pros.load(fis);
+		System.out.println(pros.getProperty("browser"));
+		System.out.println(pros.getProperty("URL"));
+		pros.setProperty("browser", "Firefox");
+		System.out.println(pros.getProperty("browser"));
+		FileOutputStream fos = new FileOutputStream("C:\\Users\\Suchit\\eclipse-workspace\\TestNGTutorial\\src\\data.properties");
+		pros.store(fos,null);
+
+	}
+
+}
+---------------------------------------------------------------------------
+#Wed Jul 29 21:29:54 IST 2020
+URL=https\:google.com
+browser=Firefox
+--------------------------------------------------------------------------
+OutPut:-
+---------
+Chrome;
+https:google.com
+Firefox
+=============================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
